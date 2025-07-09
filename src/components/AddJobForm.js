@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "../CSS/AddJobForm.css"; // Assuming you have a CSS file for styling
 
@@ -132,5 +133,6 @@ const AddJobForm = ({ onSubmit }) => {
     </div>
   );
 };
+
 
 export default AddJobForm;

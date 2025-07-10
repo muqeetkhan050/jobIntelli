@@ -1,8 +1,9 @@
 
-import React, { useState } from "react";
-import "../CSS/AddJobForm.css"; // Assuming you have a CSS file for styling
 
-const AddJobForm = ({ onSubmit }) => {
+import React, { useState } from "react";
+import "../CSS/AddJobForm.css";
+
+const AddJobForm = ({ onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
     jobTitle: "",
     company: "",
@@ -128,11 +129,50 @@ const AddJobForm = ({ onSubmit }) => {
           </div>
         </div>
 
-        <button type="submit" className="submit-btn">Add Job Application</button>
+       <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+  <button
+    type="submit"
+    style={{
+      padding: '8px 20px',
+      border: 'none',
+      borderRadius: '6px',
+      backgroundColor: '#3b82f6',
+      color: 'white',
+      fontWeight: 500,
+      fontSize: '0.95rem',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s ease',
+    }}
+    onMouseOver={(e) => e.target.style.backgroundColor = '#2563eb'}
+    onMouseOut={(e) => e.target.style.backgroundColor = '#3b82f6'}
+  >
+    Add Job
+  </button>
+
+  <button
+    type="button"
+    onClick={onCancel}
+    style={{
+      padding: '8px 20px',
+      border: '1px solid #ccc',
+      borderRadius: '6px',
+      backgroundColor: '#f3f4f6',
+      color: '#333',
+      fontWeight: 500,
+      fontSize: '0.95rem',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s ease',
+    }}
+    onMouseOver={(e) => e.target.style.backgroundColor = '#e5e7eb'}
+    onMouseOut={(e) => e.target.style.backgroundColor = '#f3f4f6'}
+  >
+    Cancel
+  </button>
+</div>
+
       </form>
     </div>
   );
 };
-
 
 export default AddJobForm;

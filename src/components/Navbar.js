@@ -1,5 +1,6 @@
-import '../App.css';
 
+import '../App.css';
+import { Link } from 'react-router-dom'; // ✅ Needed for routing
 
 const Navbar = () => {
     return (
@@ -10,6 +11,7 @@ const Navbar = () => {
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
+
                 <div className="mx-auto order-0">
                     <h1
                         className="navbar-brand mb-0"
@@ -25,11 +27,25 @@ const Navbar = () => {
                 </div>
 
                 <div className="collapse navbar-collapse justify-content-end order-1" id="navbarSupportedContent">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav d-flex align-items-center">
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Home</a>
                         </li>
-                  
+
+                        {/* 🔵 Applied Button */}
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/Applied">Applied</Link>
+                        </li>
+
+                        {/* 🟡 Interview Button */}
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/Interview">Interview</Link>
+                        </li>
+
+                        {/* 🟢 Final Status Button */}
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/FinalStatus">Final Status</Link>
+                        </li>
                     </ul>
 
                     {/* Add New Job Button */}

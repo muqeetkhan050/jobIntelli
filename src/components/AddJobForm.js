@@ -1,9 +1,10 @@
-
-
 import React, { useState } from "react";
+import { useJobs } from "../context/JobContext"; // Import the custom hook
 import "../CSS/AddJobForm.css";
 
-const AddJobForm = ({ onSubmit, onCancel }) => {
+const AddJobForm = ({ onCancel }) => {
+  const { addJob } = useJobs(); // Get addJob from Context
+
   const [formData, setFormData] = useState({
     jobTitle: "",
     company: "",
@@ -23,7 +24,7 @@ const AddJobForm = ({ onSubmit, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    addJob(formData); // Use Context's addJob instead of onSubmit
     setFormData({
       jobTitle: "",
       company: "",
@@ -129,47 +130,46 @@ const AddJobForm = ({ onSubmit, onCancel }) => {
           </div>
         </div>
 
-       <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
-  <button
-    type="submit"
-    style={{
-      padding: '8px 20px',
-      border: 'none',
-      borderRadius: '6px',
-      backgroundColor: '#3b82f6',
-      color: 'white',
-      fontWeight: 500,
-      fontSize: '0.95rem',
-      cursor: 'pointer',
-      transition: 'background-color 0.3s ease',
-    }}
-    onMouseOver={(e) => e.target.style.backgroundColor = '#2563eb'}
-    onMouseOut={(e) => e.target.style.backgroundColor = '#3b82f6'}
-  >
-    Add Job
-  </button>
+        <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
+          <button
+            type="submit"
+            style={{
+              padding: "8px 20px",
+              border: "none",
+              borderRadius: "6px",
+              backgroundColor: "#3b82f6",
+              color: "white",
+              fontWeight: 500,
+              fontSize: "0.95rem",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#2563eb")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#3b82f6")}
+          >
+            Add Job
+          </button>
 
-  <button
-    type="button"
-    onClick={onCancel}
-    style={{
-      padding: '8px 20px',
-      border: '1px solid #ccc',
-      borderRadius: '6px',
-      backgroundColor: '#f3f4f6',
-      color: '#333',
-      fontWeight: 500,
-      fontSize: '0.95rem',
-      cursor: 'pointer',
-      transition: 'background-color 0.3s ease',
-    }}
-    onMouseOver={(e) => e.target.style.backgroundColor = '#e5e7eb'}
-    onMouseOut={(e) => e.target.style.backgroundColor = '#f3f4f6'}
-  >
-    Cancel
-  </button>
-</div>
-
+          <button
+            type="button"
+            onClick={onCancel}
+            style={{
+              padding: "8px 20px",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              backgroundColor: "#f3f4f6",
+              color: "#333",
+              fontWeight: 500,
+              fontSize: "0.95rem",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#e5e7eb")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#f3f4f6")}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
